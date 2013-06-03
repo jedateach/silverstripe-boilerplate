@@ -27,7 +27,7 @@ read INSTALL_PATH
 	
 if [ -d "$INSTALL_PATH" ]; then
 	echo "$INSTALL_PATH exists, cannot install to existing folder";
-	
+
 	exit
 fi
 
@@ -36,24 +36,36 @@ if [ -d "$TEMP_PATH" ]; then
 
 	cd $TEMP_PATH
 	git fetch -q origin
+	git clean -f -d -q
 	git reset -q --hard origin/master
+	cd - >/dev/null
 else
 	echo "--> Installing SilverStripe Framework Boilerplate"
 
 	git clone -q git@github.com:wilr/silverstripe-framework-app-boilerplate.git $TEMP_PATH
 fi
 
+
 echo "--> Linking SilverStripe Boilerplate"
-cp -R 	$TEMP_PATH $INSTALL_PATH
-cd $INSTALL_PATH
+cp -R $TEMP_PATH $INSTALL_PATH
 
-echo "--> Cleaning up SilverStripe Boilerplate"
-rm -rf .git/
-composer install -q
 
-command -v sake >/dev/null 2>&1 || {
-	echo "--> Installing Sake"
-	./framework/sake installsake
-}
+if [ -d "$INSTALL_PATH" ]; then
+	echo "--> Cleaning up SilverStripe Boilerplate"
+	cd $INSTALL_PATH
+	rm -rf .git install README.md LICENSE.md
+
+	echo "--> Pulling silverstripe-framework in via Composer"
+	composer install -q
+
+	command -v sake >/dev/null 2>&1 || {
+		echo "--> Installing Sake"
+		./framework/sake installsake
+	}
+
+	cd - >/dev/null
+else 
+	echo "--> Error installing SilverStripe Boilerplate"
+fi
 
 echo "--> Done."
