@@ -39,4 +39,16 @@ class AppController extends Controller {
 		
 		return $result;
 	}
+
+	public function init() {
+		parenet::init();
+
+		Requirements::combine_files('app.css', array(
+			'app/css/normalize.css',
+			'app/css/app.css'
+		));
+
+		Requirements::javascript('framework/thirdparty/jquery/jquery.js');
+		Requirements::javascript('app/js/app.js');
+	}
 }
