@@ -1,0 +1,59 @@
+#!/bin/sh
+
+# SilverStripe Framework App Boilerplate
+#
+# Installation helper for unix based operation systems. To setup a new app with
+# the bootstrap run the following
+#
+# curl http://github.com/fullscreeninteractive/silverstripe-framework-app-boilerplate | sh
+#
+# And follow the prompts
+
+TEMP_PATH="/tmp/fsi_sfab"
+
+command -v git >/dev/null 2>&1 || { 
+	echo "git is required to download the SilverStripe Framework. Aborting." >&2; exit 1; 
+}
+
+command -v composer >/dev/null 2>&1 || {
+	echo "--> Installing Composer"
+	@curl -sS https://getcomposer.org/installer | php
+	@mv composer.phar /usr/local/bin/composer.phar
+}
+
+
+echo "Enter the path for your new SilverStripe project (e.g ~/Sites/app):";
+read INSTALL_PATH
+	
+if [ -d "$INSTALL_PATH" ]; then
+	echo "$INSTALL_PATH exists, cannot install to existing folder";
+	
+	exit
+fi
+
+if [ -d "$TEMP_PATH" ]; then
+	echo "--> Updating SilverStripe Framework Boilerplate"
+
+	cd $TEMP_PATH
+	git fetch -q origin
+	git reset -q --hard origin/master
+else
+	echo "--> Installing SilverStripe Framework Boilerplate"
+
+	git clone -q git@github.com:wilr/silverstripe-framework-app-boilerplate.git $TEMP_PATH
+fi
+
+echo "--> Linking SilverStripe Boilerplate"
+cp -R 	$TEMP_PATH $INSTALL_PATH
+cd $INSTALL_PATH
+
+echo "--> Cleaning up SilverStripe Boilerplate"
+rm -rf .git/
+composer install -q
+
+command -v sake >/dev/null 2>&1 || {
+	echo "--> Installing Sake"
+	./framework/sake installsake
+}
+
+echo "--> Done."
