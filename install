@@ -5,7 +5,7 @@
 # Installation helper for unix based operation systems. To setup a new app with
 # the bootstrap run the following
 #
-# curl http://github.com/fullscreeninteractive/silverstripe-framework-app-boilerplate | sh
+# curl http://raw.github.com/fullscreeninteractive/silverstripe-boilerplate | sh
 #
 # And follow the prompts
 
