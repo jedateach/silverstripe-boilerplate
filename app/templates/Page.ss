@@ -7,8 +7,9 @@
 		<meta charset="utf-8">
 		<% base_tag %>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>$Title - SilverStripe Boilerplate</title>
-		<meta name="description" content="">
+		<title>$Title - $SiteConfig.Title</title>
+		
+		$MetaTags
 		<meta name="viewport" content="width=device-width">
 	</head>
 	
