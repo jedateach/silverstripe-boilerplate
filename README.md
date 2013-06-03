@@ -5,9 +5,9 @@ branch contains a different boilerplate template to start from.
 
 ## Requirements
 
-PHP 5.3+
-Git
-Composer (http://getcomposer.org/)
+* PHP 5.3+
+* Git
+* Composer (http://getcomposer.org/)
 
 ## Installation
 
