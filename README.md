@@ -1,12 +1,7 @@
-# SilverStripe Framework App Boilerplate
+# SilverStripe Framework Boilerplate
 
-As of SilverStripe 3.0 developers can now build web applications on the 
-SilverStripe Framework without using the CMS module and all the bloat which
-comes with using that. 
-
-The framework contains all the functionality you know and love with SilverStripe 
-as well as a basic administration interface allowing even basic web applications 
-an interface for managing DataObjects and the like.
+This project contains boilerplate code for a SilverStripe installation. Each git
+branch contains a different boilerplate template to start from.
 
 ## Requirements
 
@@ -25,8 +20,17 @@ Or you can install manually by performing the steps below:
 
 	git clone git@github.com:fullscreeninteractive/silverstripe-framework-app-boilerplate.git my_app
 	cd my_app
-	rm -rf .git/
-	composer install
+	./install
+
+## Templates
+
+### master
+
+Master branch includes boilerplate for a framework only application (no cms).
+
+### cms
+
+Includes boilerplate for a basic CMS powered website
 
 ## Discussion
 

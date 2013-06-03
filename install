@@ -24,7 +24,16 @@ command -v composer >/dev/null 2>&1 || {
 
 echo "Enter the path for your new SilverStripe project (e.g ~/Sites/app):";
 read INSTALL_PATH
-	
+
+echo "Which boilerplate would you like to use (cms, framework)";
+read BRANCH_NAME
+
+if [ "$BRANCH_NAME" != "cms" ] && [ "$BRANCH_NAME" != 'framework' ]; then
+	echo "$BRANCH_NAME is not a valid branch"
+
+	exit
+fi
+
 if [ -d "$INSTALL_PATH" ]; then
 	echo "$INSTALL_PATH exists, cannot install to existing folder";
 
@@ -37,12 +46,14 @@ if [ -d "$TEMP_PATH" ]; then
 	cd $TEMP_PATH
 	git fetch -q origin
 	git clean -f -d -q
-	git reset -q --hard origin/master
+	git reset -q --hard origin/$BRANCH_NAME
 	cd - >/dev/null
 else
 	echo "--> Installing SilverStripe Framework Boilerplate"
 
 	git clone -q git@github.com:wilr/silverstripe-framework-app-boilerplate.git $TEMP_PATH
+	cd $TEMP_PATH
+	git reset --hard origin/$BRANCH_NAME
 fi
 
 
