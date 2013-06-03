@@ -6,7 +6,8 @@
 		"email": "will@fullscreen.io"
 	}],
 	"require": {
-		"silverstripe/framework": "3.1.x-dev"
+		"silverstripe/framework": "3.1.x-dev",
+		"silverstripe/silverstripe-cms": "3.1.x-dev"
 	},
     "suggest": {
         "silverstripe/sqlite3": "Use SQLite3 for small applications or faster unit testing",

@@ -1,7 +1,0 @@
----
-Name: appcustomroutes
-After: "*"
----
-Director:
-    rules:
-        '/' : 'HomeController'
