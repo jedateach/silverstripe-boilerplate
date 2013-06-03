@@ -27,5 +27,15 @@ class Page_Controller extends ContentController {
 
 	public function init() {
 		parent::init();
+
+		Requirements::combine_files('app.css', array(
+			'app/css/normalize.css',
+			'app/css/app.css'
+		));
+
+		Requirements::combine_files('app.js', array(
+			'framework/thirdparty/jquery/jquery.js',
+			'app/js/app.js'
+		);
 	}
 }
