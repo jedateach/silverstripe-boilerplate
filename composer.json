@@ -10,7 +10,8 @@
 	},
     "suggest": {
         "silverstripe/sqlite3": "Use SQLite3 for small applications or faster unit testing",
-        "silverstripe/googlesitemaps": "Create a sitemap.xml file including links to your URL's"
+        "silverstripe/googlesitemaps": "Create a sitemap.xml file including links to your URL's",
+        "tractorcow/silverstripe-opengraph": "Opengraph integration"
     },
     "config": {
         "process-timeout": 1200
